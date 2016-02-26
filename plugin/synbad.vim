@@ -14,7 +14,6 @@ fun! Synbad()
         let index_to_remove = index(g:syntaxes, &ft)
         if index_to_remove > -1
           call remove(g:syntaxes, index_to_remove)
-  echo g:syntaxes
         endif
         call add(g:syntaxes, &ft)
       endif
@@ -43,8 +42,7 @@ fun! SetSyntaxesWithFile(syntax_file)
 endf
 
 fun! SetNextSyntax()
-  " let g:cur_synbad_index += g:cur_synbad_index < len(g:syntaxes) ? 1 : -len(g:syntaxes)
-  let g:cur_synbad_index += g:cur_synbad_index < len(g:syntaxes) - 1 ? 1 : -len(g:syntaxes) - 1
+  let g:cur_synbad_index += g:cur_synbad_index < len(g:syntaxes) - 1 ? 1 : -len(g:syntaxes) + 1
   let l:syntax_name = g:syntaxes[g:cur_synbad_index]
   echohl Special
   echo "Syntax: " . l:syntax_name
